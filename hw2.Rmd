@@ -11,15 +11,31 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1)
 ```{r}
-far <- c(-10,15)
-print(cel <- ((far)-32)*(5/9))
+faren <- c(-10,15)
+print(cel <- ((faren)-32)*(5/9))
 
+```
+
+2)
+```{r}
+vec200 <- rep(c(1,0), 100)
+vec200
+```
+3)
+```{r}
+nums <- seq(1,1001)
+squardList <- sqrt(nums)
+roundSq <- floor(squardList)
+setSq <- unique(roundSq)
+print(numPerfect <- length(setSq))
 
 ```
 
 
-1)
 
+
+
+1)
 ```{r}
 library(ggplot2)
 #Loads the data
