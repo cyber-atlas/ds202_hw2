@@ -1,6 +1,6 @@
 ---
 title: "hw2"
-author: "cyberatlas"
+author: "cyber-atlas"
 date: "February 4, 2019"
 output: html_document
 ---
