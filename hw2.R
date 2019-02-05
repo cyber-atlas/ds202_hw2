@@ -55,24 +55,18 @@ ggplot(mpgDF, aes(x=hwy, y=cty)) +
   ggtitle("Hwy by cty")
 #As the hwy increases, the city is increases more slowly than hwy
 
-# 
-# #carsByYearDF <- mpgDF[, c("year", "cty", "mpg")]
-# #Grabs each column and puts them in a dataframe saved in carsByYear
-# carsByYear <- data.frame(mpgDF$year == '1999' |  mpgDF$year=='2008', mpgDF$cty, mpgDF$hwy)
-# #carsByYear <- subset(mpgDF, year == '1999', select=c('year', 'cty', 'hwy'))
-# carsByYear <- subset(mpgDF, year == 1997, select=c(year, cty, hwy))
-# carsByYear <- subset(mpgDF, year == '1997') 
-# print(carsByYear)
-# 
-# #nineties <- mpg[mpg$year == 1997',]
-# print(nineties)
-# 
-# work <- mpgDF[mpgDF$year == 1999,]
-# print(work)
-# 
-# work1 <- mpgDF[mpgDF$year == '2008',]
-# print(work1)
-# 
-# length(mpgDF)
-# nrow(mpgDF)
-# ?subset
+
+#Grabs each column and puts them in a dataframe saved in carsByYear
+# cars1997 <- mpgDF[mpgDF$year == 1999, ]
+cars1997 <- mpgDF[mpgDF$year == 1999, c('year', 'cty', 'hwy') ]
+# cars2008 <- mpgDF[mpgDF$year == 2008, ]
+cars2008 <- mpgDF[mpgDF$year == 2008, c('year', 'cty',"hwy")]
+#carsByYear <- data.frame(mpgDF$year == 1999, mpgDF$cty, mpgDF$hwy)
+#carsByYear <- subset(mpgDF, year == '1999', select=c('year', 'cty', 'hwy'))
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = cty, y = hwy, color = year))
+
+#TODO make a box and whisker plot for each of the 2 datasets
+boxplot(cty~year, data=mpgDF, main="City mpg" )
+boxplot(hwy~year, data=mpgDF, main="City mpg" )
