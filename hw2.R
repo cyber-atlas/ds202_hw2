@@ -57,8 +57,7 @@ ggplot(mpgDF, aes(x=hwy, y=cty)) +
 
 
 #Grabs each column and puts them in a dataframe saved in carsByYear
-# cars1997 <- mpgDF[mpgDF$year == 1999, ]
-cars1997 <- mpgDF[mpgDF$year == 1999, c('year', 'cty', 'hwy') ]
+cars1999 <- mpgDF[mpgDF$year == 1999, c('year', 'cty', 'hwy') ]
 # cars2008 <- mpgDF[mpgDF$year == 2008, ]
 cars2008 <- mpgDF[mpgDF$year == 2008, c('year', 'cty',"hwy")]
 #carsByYear <- data.frame(mpgDF$year == 1999, mpgDF$cty, mpgDF$hwy)
@@ -68,5 +67,14 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = cty, y = hwy, color = year))
 
 #TODO make a box and whisker plot for each of the 2 datasets
-boxplot(cty~year, data=mpgDF, main="City mpg" )
-boxplot(hwy~year, data=mpgDF, main="City mpg" )
+boxplot(cty~year, data=mpgDF, main="City mpg", xlab = "Year", ylab = "Miles Per Gallon" )
+boxplot(hwy~year, data=mpgDF, main="Highway mpg", xlab = "Year", ylab = "Miles Per Gallon")
+
+sprintf("1999 Highway Mean:  %f", mean(cars1999[,"hwy"]))
+sprintf("1999 City Mean:  %f", mean(cars1999[,"cty"]))
+sprintf("2008 Highway Mean:  %f", mean(cars2008[,"hwy"]))
+sprintf("2008 City Mean:  %f", mean(cars2008[,"cty"]))
+ctyMean1999 <- mean(cars1999[,"cty",])
+means1999
+?print
+               

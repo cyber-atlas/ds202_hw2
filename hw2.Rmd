@@ -10,6 +10,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 1)
+```{r}
+far <- c(-10,15)
+print(cel <- ((far)-32)*(5/9))
+
+
+```
+
+
+1)
 
 ```{r}
 library(ggplot2)
@@ -18,7 +27,7 @@ mpg
 #Shows the data
 str(mpg)
 
-#1
+
 #Save the mpg table as a dataframe
 mpgDF <- data.frame(mpg)
 head(mpgDF)
@@ -74,12 +83,24 @@ ggplot(mpgDF, aes(x=hwy, y=cty)) +
 
 As the hwy increases, the cty is increases more slowly than hwy
 
-## Including Plots
 
-You can also embed plots, for example:
+```{r}
+#Grabs each column and puts them in a dataframe saved in carsByYear
+cars1999 <- mpgDF[mpgDF$year == 1999, c('year', 'cty', 'hwy') ]
+cars2008 <- mpgDF[mpgDF$year == 2008, c('year', 'cty',"hwy")]
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+#Prints a boxplot of mpg and year
+boxplot(cty~year, data=mpgDF, main="City mpg", xlab = "Year", ylab = "Miles Per Gallon" )
+boxplot(hwy~year, data=mpgDF, main="Highway mpg", xlab = "Year", ylab = "Miles Per Gallon")
+
+sprintf("1999 Highway Mean:  %f", mean(cars1999[,"hwy"]))
+sprintf("1999 City Mean:  %f", mean(cars1999[,"cty"]))
+sprintf("2008 Highway Mean:  %f", mean(cars2008[,"hwy"]))
+sprintf("2008 City Mean:  %f", mean(cars2008[,"cty"]))
+ 
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Cars in 2008 are not necessarily more efficient than cars in 1999. The means in 1999 show that fuel effiency is slightly higher than in 2008, with the exception of the 2008 highway fuel effiency being slightly larger.
+However, in 2008, the percentile ranges are larger. The means in 2008 could be brought down by gas guzzling cars, there also seems to be more higher efficency cars in 2008 than in 1999, with the exception of 2 outliers in Highway Mpg, and 4 in Cty mpg.
+
